@@ -1,5 +1,6 @@
 FROM python:3.11-slim
-# Instalamos dependencias necesarias para compilar mysqlclient
+
+# Dependencias de sistema para compilar mysqlclient
 RUN apt-get update && apt-get install -y \
     gcc \
     default-libmysqlclient-dev \
@@ -15,4 +16,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# Ejecuta la app en 0.0.0.0:8080 (coincide con compose)
 CMD ["python", "app.py"]
